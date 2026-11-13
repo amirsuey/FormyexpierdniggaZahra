@@ -68,11 +68,6 @@
 </div>
 <div id="hint">tap anywhere to start</div>
 <script>
-
-// ==========================================
-// 1. Canvas Setup & Basic Math Tools
-// ==========================================
-
 const canvas = document.getElementById('stage');
 const ctx = canvas.getContext('2d', { alpha: false });
 let vw = 1, vh = 1, dpr = 1;
@@ -142,10 +137,6 @@ const rndI = (a, b) => (a + Math.random() * (b - a + 1)) | 0;
 const rng = mulberry32(21);
 const D2R = Math.PI / 180;
 
-// ==========================================
-// 2. Timeline & Global Variables
-// ==========================================
-
 const T_ENV_IN = 1.6;
 const T_CUR0 = 1.9;
 const T_CUR1 = 3.2;
@@ -171,10 +162,6 @@ let ENVC = [], ENV_SORTED = [], TBS = [], SHDC = [], SEALC = [];
 let BED = [], STARS = [], MOTES = [];
 let HEAT = [];
 let aFrame = 0;
-
-// ==========================================
-// 3. Noise & Color Palettes
-// ==========================================
 
 const _P = new Array(256);
 for (let i = 0; i < 256; i++) _P[i] = i;
@@ -222,10 +209,6 @@ const BOTC  = [0.78, 0.60, 0.38];
 const INK   = [0.14, 0.08, 0.05];
 const INKT  = [0.55, 0.06, 0.14];
 const STRIPE = [[0.74, 0.17, 0.15], [0.93, 0.88, 0.76], [0.17, 0.29, 0.64]];
-
-// ==========================================
-// 4. ASCII Grid & Envelope Math
-// ==========================================
 
 const GLYPH = {
   "F": ["###", "#..", "##.", "#..", "#.."],
@@ -405,10 +388,6 @@ function rebuildAscii() {
   }
 }
 
-// ==========================================
-// 5. Custom Cursor Logic
-// ==========================================
-
 const ARW = [[0.0, 0.0], [0.0, 0.86], [0.19, 0.69], [0.31, 0.99], [0.44, 0.93], [0.32, 0.65], [0.58, 0.65]];
 let POLY = [];
 let CUR_FILL = [], CUR_EDGE = [], CUR_GLOW = [], CUR_SHAD = [];
@@ -489,10 +468,6 @@ function cursor_pos(t) {
   return [x, y];
 }
 
-// ==========================================
-// 6. Fire & Particle Systems
-// ==========================================
-
 const FSET = { 1: ".'", 2: ":.", 3: "^'", 4: "^*", 5: "*(", 6: "(+)", 7: "%&", 8: "#%", 9: "#@", 10: "@" };
 const st = { burst: false, click: false, hot: false };
 let sparks = [], smoke = [], bits = [];
@@ -535,10 +510,6 @@ function fire_step(src, t) {
   st.hot = anyhot;
   return out;
 }
-
-// ==========================================
-// 7. Rendering the ASCII Visuals
-// ==========================================
 
 function drawAmbient(t, dt, gt, newCells) {
   const base = 0.20 + 0.80 * gt;
@@ -712,10 +683,6 @@ function drawClickAscii(t, dt, newCells, front) {
     }
   }
 }
-
-// ==========================================
-// 8. Cake & Text Integration into ASCII
-// ==========================================
 
 function gridOffsets() {
   return [Math.floor((vw - W) / 2), Math.floor((vh - H) / 2)];
@@ -1167,9 +1134,13 @@ function bed_k(t) {
   return ease(a) * (1 - ease(b));
 }
 
-// ==========================================
-// 9. Cake Logic & Canvas Drawing
-// ==========================================
+/* 
+   I kinda like you I hope you kinda like me back 
+   I want to take you out but I'm kinda afraid to ask 
+   You are a lot of things, you got your own business you are cool you are funny and maybe smart?... 
+   But I'm a Non-social looser but still I'm kinda funny too ❤️
+   Anyway happy birthday homie
+*/
 
 const PHRASES = [
   "So close, no matter how far",
@@ -1715,10 +1686,6 @@ function renderCake() {
   drawCandlesCake();
 }
 
-// ==========================================
-// 10. Typing Effect (DOM)
-// ==========================================
-
 const msgEl = document.getElementById('msg');
 const LINES = [
   { sel: '.l1', text: "Nothin' lasts forever but I hope we will", speed: 62, pre: 900 },
@@ -1782,10 +1749,6 @@ function startTyping() {
   }
   nextLine();
 }
-
-// ==========================================
-// 11. Main Loop & Start
-// ==========================================
 
 const hintEl = document.getElementById('hint');
 let hintHidden = false;
